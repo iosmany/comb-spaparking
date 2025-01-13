@@ -1,0 +1,8 @@
+.navbar-theme {
+    --navbar-bg: #004896;
+    --navbar-hover-bg: rgba(var(--white-rgb), 0.1);
+    --navbar-disabled-bg: transparent;
+    --navbar-hover-active-bg: rgba(var(--white-rgb), 0.15);
+    --navbar-hover-active-color: #fff;
+    --navbar-active-bg: rgba(var(--white-rgb), 0.15);
+}

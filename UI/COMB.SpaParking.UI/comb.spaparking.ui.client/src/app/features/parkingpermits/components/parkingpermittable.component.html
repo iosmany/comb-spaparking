@@ -1,0 +1,53 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">{{ title }}</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-2">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="byLicensePlate" placeholder="By License Plate" (keyup)="onLicensePlateChange()" />
+            </div>
+            <div class="col-2">
+                <select class="form-control form-control-sm" [(ngModel)]="selectedExpiredStatus" (change)="onExpiredStatusChange()">
+                    <option value="">Showing All Status</option>
+                    <option value="false">Active Permits</option>
+                    <option value="true">Expired Permits</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Parking Area Name</th>
+                    <th>effective Date</th>
+                    <th>Expiration Date</th>
+                    <th>License Plate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let parkingArea of data">
+                    <td> {{ parkingArea.parkingAreaName }} </td>
+                    <td> {{ parkingArea.effectiveDate }} </td>
+                    <td> {{ parkingArea.expirationDate }} </td>
+                    <td> {{ parkingArea.licensePlate }} </td>
+                    <td> <a [routerLink]="['detail', parkingArea.id]" class="btn btn-secondary btn-sm">Detail</a> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-2 ">
+                <div class="btn-group d-flex">
+                    <button type="button" class="btn btn-default" (click)="onPrevious()">Previous</button>
+                    <button type="button" class="btn btn-default" (click)="onNext()">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

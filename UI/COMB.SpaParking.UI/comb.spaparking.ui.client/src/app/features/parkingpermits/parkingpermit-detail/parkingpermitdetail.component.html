@@ -1,0 +1,47 @@
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Parking Permit Detail</h5>
+    </div>
+
+    <ul *ngIf="model" class="list-group list-group-flush border-top">
+        <li class="list-group-item d-flex">
+            <span class="fw-semibold">Parking Area</span>
+            <div class="ms-auto">{{ model.parkingAreaName }}</div>
+        </li>
+        <li class="list-group-item d-flex">
+            <span class="fw-semibold">Effective Date</span>
+            <div class="ms-auto">{{ model.effectiveDate }}</div>
+        </li>
+        <li class="list-group-item d-flex">
+            <span class="fw-semibold">Expiration Date:</span>
+            <div class="ms-auto">{{ model.expirationDate }}</div>
+        </li>
+        <li class="list-group-item d-flex">
+            <span class="fw-semibold">Expired:</span>
+            <div class="ms-auto">
+                <div class="badge bg-info" *ngIf="expired">Yes</div>
+                <div class="badge bg-info" *ngIf="!expired">No</div>
+            </div>
+        </li>
+        <li class="list-group-item d-flex">
+            <span class="fw-semibold">License Plate:</span>
+            <div class="ms-auto">{{ model.licensePlate }}</div>
+        </li>
+        <li class="list-group-item d-flex">
+            <span class="fw-semibold">Date Created:</span>
+            <div class="ms-auto">{{ model.dateCreated }}</div>
+        </li>
+        <li class="list-group-item d-flex">
+            <span *ngIf="model.inactive" class="fw-semibold">Inactive</span>
+            <div *ngIf="expired && !model.inactive" class="ms-auto">
+                <button class="btn btn-sm btn-secondary" (click)="deactivate()">Deactivate</button>                
+            </div>
+            <div *ngIf="model.inactive" class="ms-auto">
+                <div class="badge bg-info">Yes</div>
+            </div>
+        </li>
+    </ul>
+
+    
+</div>

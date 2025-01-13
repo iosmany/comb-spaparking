@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">{{ title }}</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+                <select class="form-control form-control-sm" [(ngModel)]="selectedParkingAreaType" (change)="onParkingAreaTypeChange()">
+                    <option value="0">Showing All Area Types</option>
+                    <option *ngFor="let parkingAreaType of parkingAreaTypes" [value]="parkingAreaType.id">
+                        {{ parkingAreaType.parkingAreaTypeDescription }}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Parking Area Name</th>
+                    <th>Parking Area Type</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let parkingArea of data">
+                    <td> {{ parkingArea.parkingAreaName }} </td>
+                    <td> {{ parkingArea.parkingAreaTypeDescription }} </td>
+                    <td> {{ parkingArea.latitude }} </td>
+                    <td> {{ parkingArea.longitude }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

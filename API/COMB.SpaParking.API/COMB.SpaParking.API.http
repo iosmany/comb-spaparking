@@ -1,0 +1,57 @@
+@COMB.SpaParking.API_HostAddress = http://localhost:5110
+
+GET {{COMB.SpaParking.API_HostAddress}}/api/v1/parkingareas
+Accept: application/json
+
+###
+
+GET {{COMB.SpaParking.API_HostAddress}}/api/v1/parkingareas?skip=1&length=2
+Accept: application/json
+
+###
+
+GET {{COMB.SpaParking.API_HostAddress}}/api/v1/parkingareas?parkingAreaTypeId=2
+Accept: application/json
+
+###
+
+
+GET {{COMB.SpaParking.API_HostAddress}}/api/v1/parkingpermits
+Accept: application/json
+
+###
+
+GET {{COMB.SpaParking.API_HostAddress}}/api/v1/parkingpermits?skip=0&length=10
+Accept: application/json
+
+###
+
+GET {{COMB.SpaParking.API_HostAddress}}/api/v1/parkingpermits?bylicenseplate=789
+Accept: application/json
+
+###
+
+GET {{COMB.SpaParking.API_HostAddress}}/api/v1/parkingpermits?expired=true
+Accept: application/json
+
+###
+
+GET {{COMB.SpaParking.API_HostAddress}}/api/v1/parkingpermits?expired=false
+Accept: application/json
+
+###
+
+GET {{COMB.SpaParking.API_HostAddress}}/api/v1/parkingpermits/18
+Accept: application/json
+
+###
+
+GET {{COMB.SpaParking.API_HostAddress}}/api/v1/parkingpermits/0/deactivate
+Accept: application/json
+
+###
+
+GET {{COMB.SpaParking.API_HostAddress}}/api/v1/parkingareatypes
+Accept: application/json
+
+###

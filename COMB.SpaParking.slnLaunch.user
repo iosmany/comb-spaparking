@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Multiple",
+    "Projects": [
+      {
+        "Path": "UI\\COMB.SpaParking.UI\\COMB.SpaParking.UI.Server\\COMB.SpaParking.UI.Server.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "API\\COMB.SpaParking.API\\COMB.SpaParking.API.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
+  }
+]
