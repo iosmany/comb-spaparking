@@ -11,7 +11,6 @@ using System.Reflection;
 var logger = NLog.LogManager.Setup()
     .LoadConfigurationFromAppSettings()
     .GetCurrentClassLogger();
-
 try
 {
     RunWebapi();
@@ -28,6 +27,7 @@ finally
 void RunWebapi()
 {
     var builder = WebApplication.CreateBuilder(args);
+    COMB.SpaParking.Persistence.Configuration.Load(builder.Configuration);
 
     const string API_VERSION = "v1";
 
@@ -54,6 +54,12 @@ void RunWebapi()
         var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
         options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
     });
+
+    if (builder.Environment.IsDevelopment())
+    {
+        builder.Logging.ClearProviders();
+        builder.Host.UseNLog();
+    }
 
     AddControllersWithNewtonsoftJson(builder.Services);
 

@@ -24,6 +24,8 @@ void RunWebApp()
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    COMB.SpaParking.Persistence.Configuration.Load(builder.Configuration);
+
     builder.Services.AddIdentity<IdentityUser, IdentityRole>()
         .AddEntityFrameworkStores<COMB.SpaParking.Persistence.DatabaseContext>();
 

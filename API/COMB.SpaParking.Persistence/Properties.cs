@@ -3,7 +3,7 @@
 using Microsoft.Extensions.Configuration;
 
 namespace COMB.SpaParking.Persistence;
-static class Configuration
+public static class Configuration
 {
     static Configuration()
     {
