@@ -8,7 +8,6 @@ import { SidebarComponent } from './layout/components/sidebar/sidebar.component'
   selector: 'app-root',
   imports: [
     RouterOutlet,
-
     //layout
     HeaderComponent,
     FooterComponent,

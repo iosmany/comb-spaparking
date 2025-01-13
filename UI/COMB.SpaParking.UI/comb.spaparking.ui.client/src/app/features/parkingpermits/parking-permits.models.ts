@@ -3,7 +3,7 @@
 export interface ParkingPermit {
     id: number;
     parkingAreaId: number;
-    parkingAreaName: number;
+    parkingAreaName: string;
     effectiveDate: Date;
     expirationDate: Date;
     licensePlate: string;
