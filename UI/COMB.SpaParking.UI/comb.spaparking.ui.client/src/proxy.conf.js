@@ -7,7 +7,9 @@ const PROXY_CONFIG = [
   {
     context: [
       "/api",
+      "/identity/account/",
       "/identity/account/login",
+      "/identity/account/register",
     ],
     target,
     secure: false

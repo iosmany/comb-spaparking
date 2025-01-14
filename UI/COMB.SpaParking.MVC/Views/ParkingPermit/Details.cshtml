@@ -1,0 +1,98 @@
+﻿@model COMB.SpaParking.Application.ParkingPermits.IParkingPermit
+
+@{
+	string inactiveText = Model.Inactive ? "Yes" : "No";
+	bool expired = Model.ExpirationDate < DateTime.Now;
+	string expiredText = expired ? "Yes" : "No";
+}
+<div class="container">
+	<div class="row">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Parking Permits</h2>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Details</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>License Plate</td>
+						<td>@Html.DisplayFor(m => m.LicensePlate)</td>
+					</tr>
+					<tr>
+						<td>Effective Date</td>
+						<td>@Html.DisplayFor(m => m.EffectiveDate)</td>
+					</tr>
+					<tr>
+						<td>Expiration Date</td>
+						<td>@Html.DisplayFor(m => m.ExpirationDate)</td>
+					</tr>
+					<tr>
+						<td>Expired</td>
+						<td>
+							<div class="badge bg-info">@expiredText</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Parking Area Name</td>
+						<td>@Html.DisplayFor(m=>m.ParkingAreaName)</td>
+					</tr>
+					<tr>
+						<td>Date Created</td>
+						<td>@Html.DisplayFor(m => m.DateCreated)</td>
+					</tr>
+					<tr>
+						<td>Inactive</td>
+						<td>
+							@if (!expired)
+							{
+								<div class="badge bg-info">@inactiveText</div>
+							}
+							else
+							{
+								<a class="btn btn-secondary btn-sm" asp-action="confirmdeactivate" asp-controller="parkingpermit" asp-route-id="@Model.Id">Deactivate</a>
+							}
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+@section Scripts {
+
+	<script>
+
+		$(document).ready(function () {
+			$('#search-license-plate').on('keyup', function () {
+				var value = $(this).val();
+				//get the current query path
+				var url = window.location.href;
+				//check if the query string is already present
+				if (url.indexOf('?') > -1) {
+					if (url.indexOf('byLicensePlate') > -1) {
+						url = url.replace(/byLicensePlate=[^&]*/, 'byLicensePlate=' + value);
+					}
+					else {
+						url = url + '&byLicensePlate=' + value;
+					}
+				}
+				else {
+					url = url + '?byLicensePlate=' + value;
+				}
+				//window.location.href= url;
+			});
+		});
+
+	</script>
+
+}
+

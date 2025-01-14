@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace COMB.SpaParking.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialSpaParking : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,7 +50,7 @@ namespace COMB.SpaParking.Persistence.Migrations
                     table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
-
+            
             migrationBuilder.CreateTable(
                 name: "RoleClaims",
                 columns: table => new
@@ -157,6 +157,7 @@ namespace COMB.SpaParking.Persistence.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+           
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",
                 table: "RoleClaims",
@@ -200,7 +201,8 @@ namespace COMB.SpaParking.Persistence.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-          migrationBuilder.DropTable(
+           
+            migrationBuilder.DropTable(
                 name: "RoleClaims");
 
             migrationBuilder.DropTable(

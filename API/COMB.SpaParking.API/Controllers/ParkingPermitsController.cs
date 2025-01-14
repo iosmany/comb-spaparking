@@ -61,6 +61,11 @@ namespace COMB.SpaParking.API.Controllers
             );
         }
 
+        /// <summary>
+        /// Deactivate a parking permit setting its status to inactive
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPut("{id}/deactivate")]
         [ProducesResponseType(typeof(ParkingPermitResponse), statusCode: StatusCodes.Status200OK)]
         public async Task<IActionResult> Deactivate(int id)

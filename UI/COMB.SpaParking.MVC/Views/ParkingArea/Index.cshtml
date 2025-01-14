@@ -1,0 +1,51 @@
+﻿@model IEnumerable<COMB.SpaParking.Application.ParkingAreas.IParkingArea>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2 class="mb-2">Parking Areas</h2>
+
+			<form asp-action="index" asp-controller="parkingarea" method="get">
+				<input type="hidden" value="@ViewBag.CurrentFilter.Page" />
+				<input type="hidden" value="@ViewBag.CurrentFilter.Length" />
+				<div class="row mt-2 mb-2">
+					<div class="col-2">
+						@Html.DropDownList("ParkingAreaTypeId", ViewBag.ParkingAreaTypes, null, new { @class = "form-control form-control-sm" })
+					</div>
+					<div class="col-1">
+						<button type="submit" class="btn btn-secondary btn-sm w100">Search</button>
+					</div>
+				</div>
+			</form>
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Parking Area Name</th>
+						<th>Parking Area Type</th>
+						<th>Total Slots</th>
+						<th>Available Slots</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.ParkingAreaName)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.ParkingAreaTypeDescription)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Longitude)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Latitude)
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

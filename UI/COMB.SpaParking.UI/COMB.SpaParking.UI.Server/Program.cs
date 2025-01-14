@@ -1,5 +1,7 @@
 using COMB.SpaParking.UI.Server;
+using COMB.SpaParking.UI.Server.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using NLog;
 using NLog.Web;
 
@@ -27,15 +29,17 @@ void RunWebApp()
     COMB.SpaParking.Persistence.Configuration.Load(builder.Configuration);
 
     builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-        .AddEntityFrameworkStores<COMB.SpaParking.Persistence.DatabaseContext>();
+        .AddEntityFrameworkStores<COMB.SpaParking.Persistence.DatabaseContext>()
+        .AddDefaultTokenProviders();
 
     builder.ConfigureLogging();
     builder.ConfigureDatabase();
     builder.ConfigureAuthentication();
 
     builder.Services.AddHttpClient(); // Add HttpClient for proxying
-    builder.Services.AddControllers();
     builder.Services.AddRazorPages();
+
+    builder.Services.AddTransient<IEmailSender, EmailSender>();
 
     builder.RunTypesRegistration();
 
@@ -64,8 +68,17 @@ void RunWebApp()
     app.UseAuthorization();
     app.UseRouting();
 
-    app.MapControllers();
-    app.MapRazorPages();
+    app.MapGet("/Identity/Account", (HttpContext context, SignInManager<IdentityUser> SignInManager) =>
+    {
+        bool signedIn = SignInManager.IsSignedIn(context.User);
+        if (!signedIn)
+            return Results.Unauthorized();
+        return Results.Ok();
+
+    }).RequireAuthorization();
+
+    app.MapRazorPages()
+        .WithStaticAssets();
 
     app.MapReverseProxy();
 

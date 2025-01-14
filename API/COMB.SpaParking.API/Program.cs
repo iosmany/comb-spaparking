@@ -2,6 +2,8 @@ using Asp.Versioning;
 using COMB.SpaParking.API.Middlewares;
 using COMB.SpaParking.Base;
 using COMB.SpaParking.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 using NLog;
 using NLog.Web;
@@ -33,6 +35,10 @@ void RunWebapi()
 
     builder.Services.AddDbContext<DatabaseContext>();
 
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
+            options => builder.Configuration.Bind("JwtSettings", options));
+
     builder.Services.AddApiVersioning(options =>
     {
         options.DefaultApiVersion = new ApiVersion(1, 0);
@@ -41,7 +47,8 @@ void RunWebapi()
         options.ApiVersionReader = new HeaderApiVersionReader("api-version");
     });
 
-    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+     .AddEntityFrameworkStores<DatabaseContext>();
 
     builder.Services.AddSwaggerGen(options =>
     {
@@ -67,6 +74,8 @@ void RunWebapi()
 
     var app = builder.Build();
 
+    app.MapIdentityApi<IdentityUser>();
+
     if (app.Environment.IsDevelopment())
     {
         app.UseSwagger();
@@ -80,6 +89,9 @@ void RunWebapi()
     app.UseMiddleware<ExceptionHandlingMiddleware>();
     app.UseHttpsRedirection();
     app.UseStaticFiles();
+
+    app.UseAuthorization();
+
     app.MapControllers();
 
     app.Run();

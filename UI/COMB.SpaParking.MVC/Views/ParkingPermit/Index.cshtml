@@ -1,0 +1,66 @@
+﻿@model IEnumerable<COMB.SpaParking.Application.ParkingPermits.IParkingPermit>
+
+<div class="container">
+	<div class="row">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Parking Permits</h2>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<form asp-action="index" asp-controller="parkingpermit" method="get">
+				<input type="hidden" name="page" value="@ViewBag.CurrentFilter.Page" />
+				<input type="hidden" name="length" value="@ViewBag.CurrentFilter.Length" />
+				<div class="row mt-2 mb-2">
+					
+					<div class="col-2">
+						<input type="text" id="search-license-plate" value="@ViewBag.CurrentFilter.ByLicensePlate" class="form-control form-control-sm" name="byLicensePlate" placeholder="Search License Plate" />
+					</div>
+					<div class="col-2">
+						@Html.DropDownList("Expired", ViewBag.ExpiredDropdownDataSource, null, new { @class = "form-control form-control-sm" })
+					</div>
+				<div class="col-1">
+					<button type="submit" class="btn btn-secondary btn-sm w100">Search</button>
+				</div>
+				</div>
+
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>LicensePlate</th>
+							<th>Parking Area Name</th>
+							<th>EffectiveDate</th>
+							<th>ExpirationDate</th>
+							<th>DateCreated</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>@Html.DisplayFor(modelItem => item.LicensePlate)</td>
+								<td>@Html.DisplayFor(modelItem => item.ParkingAreaName)</td>
+								<td>@Html.DisplayFor(modelItem => item.EffectiveDate)</td>
+								<td>@Html.DisplayFor(modelItem => item.ExpirationDate)</td>
+								<td>@Html.DisplayFor(modelItem => item.DateCreated)</td>
+								<td>
+									<a class="btn btn-secondary btn-sm" asp-action="details" asp-controller="parkingpermit" asp-route-id="@item.Id">Details</a> 
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+				<div class="row mt-2 mb-2">
+					<div class="col-2">
+						<div>
+							<button class="btn btn-sm btn-secondary" name="next" value="previous">Previous</button>
+							<button class="btn btn-sm btn-secondary" type="submit" name="next" value="next">Next</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+

@@ -129,7 +129,7 @@ namespace COMB.SpaParking.UI.Server.Areas.Identity.Pages.Account
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
+                    return Redirect("/");
                 }
             }
 

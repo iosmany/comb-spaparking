@@ -40,6 +40,8 @@ public sealed class DatabaseContext : IdentityDbContext<IdentityUser>, IDatabase
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.RenameIdentityTables();
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
@@ -51,7 +53,6 @@ public sealed class DatabaseContext : IdentityDbContext<IdentityUser>, IDatabase
             .HasNoKey()
             .ToView("v_ParkingAreas");
 
-        base.OnModelCreating(modelBuilder);
     }
 
     void SetAudit()

@@ -11,13 +11,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace COMB.SpaParking.Persistence.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseServiceModelSnapshot : ModelSnapshot
+    partial class DatabaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "9.0.0")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -30,8 +33,10 @@ namespace COMB.SpaParking.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTimeOffset>("DateCreated")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<string>("DateCreated")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("Inactive")
                         .HasColumnType("bit");
@@ -65,14 +70,13 @@ namespace COMB.SpaParking.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTimeOffset>("DateCreated")
-                        .HasColumnType("datetimeoffset");
-
                     b.Property<bool>("Inactive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ParkingAreaTypeDescription")
-                        .HasColumnType("int");
+                    b.Property<string>("ParkingAreaTypeDescription")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -87,14 +91,14 @@ namespace COMB.SpaParking.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTimeOffset>("DateCreated")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateTimeOffset>("EffectiveDate")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("EffectiveDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateTimeOffset>("ExpirationDate")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("Inactive")
                         .HasColumnType("bit");
@@ -115,6 +119,30 @@ namespace COMB.SpaParking.Persistence.Migrations
                     b.HasIndex("ParkingAreaId");
 
                     b.ToTable("ParkingPermits");
+                });
+
+            modelBuilder.Entity("COMB.SpaParking.Domain.Views.ParkingAreasView", b =>
+                {
+                    b.Property<string>("AreaDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ParkingAreaID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ParkingAreaName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable((string)null);
+
+                    b.ToView("v_ParkingAreas", (string)null);
                 });
 
             modelBuilder.Entity("COMB.SpaParking.Domain.Views.ParkingsPermitsByAreaView", b =>
@@ -344,7 +372,7 @@ namespace COMB.SpaParking.Persistence.Migrations
                     b.HasOne("COMB.SpaParking.Domain.Entities.ParkingAreaType", "ParkingAreaType")
                         .WithMany()
                         .HasForeignKey("ParkingAreaTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ParkingAreaType");
@@ -355,7 +383,7 @@ namespace COMB.SpaParking.Persistence.Migrations
                     b.HasOne("COMB.SpaParking.Domain.Entities.ParkingArea", "ParkingArea")
                         .WithMany("ParkingPermits")
                         .HasForeignKey("ParkingAreaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ParkingArea");

@@ -11,5 +11,18 @@
         "Action": "StartWithoutDebugging"
       }
     ]
+  },
+  {
+    "Name": "MVC Multiple",
+    "Projects": [
+      {
+        "Path": "API\\COMB.SpaParking.API\\COMB.SpaParking.API.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "UI\\COMB.SpaParking.MVC\\COMB.SpaParking.MVC.csproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]

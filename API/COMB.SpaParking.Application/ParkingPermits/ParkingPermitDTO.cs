@@ -1,4 +1,4 @@
-﻿namespace COMB.SpaParking.Application.ParkingAreas
+﻿namespace COMB.SpaParking.Application.ParkingPermits
 {
     public interface IParkingPermit
     {

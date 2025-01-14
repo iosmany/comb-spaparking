@@ -16,3 +16,5 @@
 /UI/COMB.SpaParking.UI/COMB.SpaParking.UI.Server/obj
 /UI/COMB.SpaParking.UI/comb.spaparking.ui.client/obj
 /.vs
+/UI/COMB.SpaParking.MVC/bin/Debug/net9.0
+/UI/COMB.SpaParking.MVC/obj

@@ -1,0 +1,138 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-COMB.SpaParking.MVC-4e4c48df-4d3a-47f9-af9c-44ec430a578d</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="nlog.config" />
+    <Content Remove="wwwroot\css\all.min.css" />
+    <Content Remove="wwwroot\css\bootstrap.min.css" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Black.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Black.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-BlackItalic.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-BlackItalic.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Bold.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Bold.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-BoldItalic.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-BoldItalic.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-ExtraBold.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-ExtraBold.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-ExtraBoldItalic.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-ExtraBoldItalic.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-ExtraLight.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-ExtraLight.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-ExtraLightItalic.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-ExtraLightItalic.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-italic.var.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Italic.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Italic.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Light.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Light.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-LightItalic.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-LightItalic.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Medium.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Medium.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-MediumItalic.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-MediumItalic.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Regular.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Regular.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-roman.var.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-SemiBold.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-SemiBold.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-SemiBoldItalic.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-SemiBoldItalic.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Thin.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-Thin.woff2" />
+    <Content Remove="wwwroot\fonts\inter\Inter-ThinItalic.woff" />
+    <Content Remove="wwwroot\fonts\inter\Inter-ThinItalic.woff2" />
+    <Content Remove="wwwroot\fonts\inter\inter.css" />
+    <Content Remove="wwwroot\fonts\inter\Inter.var.woff2" />
+    <Content Remove="wwwroot\icons\phosphor\fonts\Phosphor.svg" />
+    <Content Remove="wwwroot\icons\phosphor\fonts\Phosphor.ttf" />
+    <Content Remove="wwwroot\icons\phosphor\fonts\Phosphor.woff" />
+    <Content Remove="wwwroot\icons\phosphor\selection.json" />
+    <Content Remove="wwwroot\icons\phosphor\styles.min.css" />
+    <Content Remove="wwwroot\images\backgrounds\boxed_bg.png" />
+    <Content Remove="wwwroot\images\login_cover.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\css\all.min.css" />
+    <None Include="wwwroot\css\bootstrap.min.css" />
+    <None Include="wwwroot\fonts\inter\Inter-Black.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-Black.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-BlackItalic.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-BlackItalic.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-Bold.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-Bold.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-BoldItalic.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-BoldItalic.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-ExtraBold.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-ExtraBold.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-ExtraBoldItalic.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-ExtraBoldItalic.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-ExtraLight.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-ExtraLight.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-ExtraLightItalic.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-ExtraLightItalic.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-italic.var.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-Italic.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-Italic.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-Light.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-Light.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-LightItalic.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-LightItalic.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-Medium.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-Medium.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-MediumItalic.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-MediumItalic.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-Regular.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-Regular.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-roman.var.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-SemiBold.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-SemiBold.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-SemiBoldItalic.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-SemiBoldItalic.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-Thin.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-Thin.woff2" />
+    <None Include="wwwroot\fonts\inter\Inter-ThinItalic.woff" />
+    <None Include="wwwroot\fonts\inter\Inter-ThinItalic.woff2" />
+    <None Include="wwwroot\fonts\inter\inter.css" />
+    <None Include="wwwroot\fonts\inter\Inter.var.woff2" />
+    <None Include="wwwroot\icons\phosphor\fonts\Phosphor.svg" />
+    <None Include="wwwroot\icons\phosphor\fonts\Phosphor.ttf" />
+    <None Include="wwwroot\icons\phosphor\fonts\Phosphor.woff" />
+    <None Include="wwwroot\icons\phosphor\selection.json" />
+    <None Include="wwwroot\icons\phosphor\styles.min.css" />
+    <None Include="wwwroot\images\backgrounds\boxed_bg.png" />
+    <None Include="wwwroot\images\login_cover.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+    <PackageReference Include="NLog" Version="5.3.4" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\API\COMB.SpaParking.Application\COMB.SpaParking.Application.csproj" />
+    <ProjectReference Include="..\..\API\COMB.SpaParking.Persistence\COMB.SpaParking.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
